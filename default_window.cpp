@@ -23,6 +23,12 @@ DefaultWindow::DefaultWindow() {
 
 auto DefaultWindow::on_open_file_button_clicked() -> void {}
 
-auto DefaultWindow::on_clear_button_clicked() -> void {}
+auto DefaultWindow::on_clear_button_clicked() -> void {
+  Glib::RefPtr<Gtk::TextBuffer> void_buffer;
+  code_text->set_buffer(void_buffer);
+  IR_text->set_buffer(void_buffer);
+  asm_text->set_buffer(void_buffer);
+  result_text->set_buffer(void_buffer);
+}
 
 auto DefaultWindow::on_run_button_clicked() -> void {}
