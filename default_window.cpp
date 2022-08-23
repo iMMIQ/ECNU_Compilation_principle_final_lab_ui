@@ -56,14 +56,15 @@ auto DefaultWindow::on_clear_button_clicked() -> void {
 auto DefaultWindow::on_run_button_clicked() -> void {
   std::ofstream os("code.txt", std::ios::out);
   os << code_text->get_buffer()->get_text() << std::endl;
-  if (!system("./compiler -c code.txt -o code.ll -S")) {
+  if (!system(
+          "./compiler -c code.txt -o code.ll -S > /dev/null 2> error.txt")) {
     IR_text->get_buffer()->set_text(get_file_text("code.ll"));
     system("./compiler -c code.txt -o code.s -s");
     asm_text->get_buffer()->set_text(get_file_text("code.s"));
     system("./compiler -c code.txt -o code -O && ./code > result.txt");
     result_text->get_buffer()->set_text(get_file_text("result.txt"));
   } else {
-    // TODO: 错误流处理
+    result_text->get_buffer()->set_text(get_file_text("error.txt"));
   }
 }
 
@@ -77,4 +78,5 @@ auto DefaultWindow::get_file_text(const std::string &path)
       return str;
     }
   }
+  return "";
 }
