@@ -215,7 +215,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="run_button">
             <property name="label" translatable="yes">编译运行</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
