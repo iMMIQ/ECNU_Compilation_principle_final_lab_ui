@@ -29,14 +29,21 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="code_text">
+              <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="margin-start">5</property>
                 <property name="margin-end">5</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <property name="monospace">True</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <object class="GtkTextView" id="code_text">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -69,14 +76,21 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="IR_text">
+              <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="margin-start">5</property>
                 <property name="margin-end">5</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <property name="monospace">True</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <object class="GtkTextView" id="IR_text">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -109,14 +123,21 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="asm_text">
+              <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="margin-start">5</property>
                 <property name="margin-end">5</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <property name="monospace">True</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <object class="GtkTextView" id="asm_text">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -149,14 +170,21 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="result_text">
+              <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="margin-start">5</property>
                 <property name="margin-end">5</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <property name="monospace">True</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <object class="GtkTextView" id="result_text">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="monospace">True</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>

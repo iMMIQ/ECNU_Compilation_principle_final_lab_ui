@@ -3,6 +3,8 @@
 
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
+#include <gtkmm/filechooser.h>
+#include <gtkmm/filechooserdialog.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/window.h>
 
@@ -25,6 +27,8 @@ public:
   auto on_open_file_button_clicked() -> void;
   auto on_clear_button_clicked() -> void;
   auto on_run_button_clicked() -> void;
+
+  void on_file_dialog_response(int response_id, Gtk::FileChooserDialog *dialog);
 };
 
 #endif // ECNU_COMPILATION_PRINCIPLE_FINAL_LAB_UI_DEFAULT_WINDOW_H
