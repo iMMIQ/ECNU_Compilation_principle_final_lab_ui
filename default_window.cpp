@@ -41,15 +41,8 @@ auto DefaultWindow::on_open_file_button_clicked() -> void {
   dialog.add_filter(filter_any);
 
   if (dialog.run() == Gtk::RESPONSE_OK) {
-    std::string file = dialog.get_filename();
-    if (std::ifstream is{file, std::ios::binary | std::ios::ate}) {
-      auto size = is.tellg();
-      std::string str(size, '\0');
-      is.seekg(0);
-      if (is.read(&str[0], size)) {
-        code_text->get_buffer()->set_text(str);
-      }
-    }
+    std::string path = dialog.get_filename();
+    code_text->get_buffer()->set_text(get_file_text(path));
   }
 }
 
@@ -60,4 +53,28 @@ auto DefaultWindow::on_clear_button_clicked() -> void {
   result_text->get_buffer()->set_text("");
 }
 
-auto DefaultWindow::on_run_button_clicked() -> void {}
+auto DefaultWindow::on_run_button_clicked() -> void {
+  std::ofstream os("code.txt", std::ios::out);
+  os << code_text->get_buffer()->get_text() << std::endl;
+  if (!system("./compiler -c code.txt -o code.ll -S")) {
+    IR_text->get_buffer()->set_text(get_file_text("code.ll"));
+    system("./compiler -c code.txt -o code.s -s");
+    asm_text->get_buffer()->set_text(get_file_text("code.s"));
+    system("./compiler -c code.txt -o code -O && ./code > result.txt");
+    result_text->get_buffer()->set_text(get_file_text("result.txt"));
+  } else {
+    // TODO: 错误流处理
+  }
+}
+
+auto DefaultWindow::get_file_text(const std::string &path)
+    -> std::string const {
+  if (std::ifstream is{path, std::ios::binary | std::ios::ate}) {
+    auto size = is.tellg();
+    std::string str(size, '\0');
+    is.seekg(0);
+    if (is.read(&str[0], size)) {
+      return str;
+    }
+  }
+}

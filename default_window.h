@@ -19,16 +19,15 @@ private:
   Gtk::Button *clear_button{};
   Gtk::Button *run_button{};
 
+  static auto get_file_text(const std::string &path) -> std::string const;
+
 public:
   DefaultWindow();
-
   ~DefaultWindow() override = default;
 
   auto on_open_file_button_clicked() -> void;
   auto on_clear_button_clicked() -> void;
   auto on_run_button_clicked() -> void;
-
-  void on_file_dialog_response(int response_id, Gtk::FileChooserDialog *dialog);
 };
 
 #endif // ECNU_COMPILATION_PRINCIPLE_FINAL_LAB_UI_DEFAULT_WINDOW_H
